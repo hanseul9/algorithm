@@ -14,7 +14,6 @@ public class Main {
         String input = sc.next();
         char[] number = input.toCharArray();
         int total = 0;
-        //number = input.toCharArray();
 
         for(int i=0;i<n;i++){
             total+=Integer.parseInt(String.valueOf(number[i]));
