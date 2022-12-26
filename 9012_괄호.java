@@ -16,20 +16,24 @@ public class Main {
         StringTokenizer st = new StringTokenizer(bf.readLine());
         int t = Integer.parseInt(st.nextToken());
 
-        int left=0, right=0;
+       String input[] = new String[t];
 
         for(int i=0;i<t;i++){
+
+
+ 		st = new StringTokenizer(bf.readLine());
+            input[i] = st.nextToken();
+
             Stack<Character> stack = new Stack<Character>();
-            st = new StringTokenizer(bf.readLine());
-            String input = st.nextToken();
             boolean finish = false;
 
 
-            for(int j=0;j<input.length();j++){
-                char c = input.charAt(i);
+            for(int j=0;j<input[i].length();j++){
+                char c = input[i].charAt(j);
 
-                if(c=='(')
+                if(c=='('){
                     stack.push(c);
+			}
                 else if(stack.empty()){ //스택이 비어있는 경우
                     System.out.println("NO");
                     finish = true;
@@ -47,7 +51,7 @@ public class Main {
                     System.out.println("YES");
                 }
                 else{
-                    System.out.println("No");
+                    System.out.println("NO");
                 }
             }
 
