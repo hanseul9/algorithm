@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Member;
-import java.util.List;
+
 
 /**
  * 2750 수 정렬하기
