@@ -20,14 +20,14 @@ public class Main {
             arr[i] = Integer.parseInt(bf.readLine());
         }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N-1; i++) {
             min_index = i;
-            for (int j = i; j < N; j++) {
+            for (int j = i+1; j < N; j++) {
                 if (arr[min_index] > arr[j]) { //최솟값 구하기
                     min_index = j;
                 }
             }
-            swap(arr, i, min_index); 
+            swap(arr, i, min_index);
         }
 
         for (int i = 0; i < N; i++) {
