@@ -4,4 +4,4 @@
   
 - 유니코드 특수문자 출력  
 \u 를 유니코드 앞에 붙임  
-\ u는 escape sequence라고 하며 \n 도 escape sequence의 일종   
+\u는 escape sequence라고 하며 \n 도 escape sequence의 일종   
