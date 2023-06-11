@@ -21,8 +21,7 @@ public class Main {
     static int lineCount;
     static int startNode;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         nodeCount = sc.nextInt(); //컴퓨터 수
         lineCount = sc.nextInt(); //컴퓨터 쌍 수
