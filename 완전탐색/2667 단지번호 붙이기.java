@@ -8,7 +8,6 @@ import java.util.*;
 
 public class Main {
     static Queue<Point> queue = new LinkedList<>(); //BFS에 쓰일 큐
-    static ArrayList<Integer> answer  = new ArrayList<>();
     static int count = 0;
     static boolean[][] visited;
     static int[][] map;
