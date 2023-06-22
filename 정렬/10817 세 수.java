@@ -1,26 +1,48 @@
 /**
  * 10817 세 수
- * 버블정렬, 선택정렬, 삽입정렬
+ * 버블정렬, 선택정렬, 삽입정렬,
+ * 계수정렬
  */
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    static int N = 3;
+
+    static int N = 3; //배열크기
+
+    //계수정렬에서 사용
+    static int[] result = new int[N];
+    static int[] count;
+    static int[] sum;
+    static int max;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] arr = {sc.nextInt(), sc.nextInt(), sc.nextInt()};
+        int[] arr = new int[N];
+
+        max = 0; //계수정렬에서 사용
+        for (int i = 0; i < N; i++) {
+            int value = sc.nextInt();
+            max = Math.max(max, value);
+            arr[i] = value;
+        }
+        count = new int[max + 1]; //max 인덱스까지 사용하므로 +1 
+        sum = new int[max + 1];
+
 
         //bubble(arr);
         //selection(arr);
-        insertion(arr);
+        //insertion(arr);
+        counting(arr);
 
 
-        System.out.println(arr[0]);
-        System.out.println(arr[1]);
-        System.out.println(arr[2]);
 
+        /*
+         * 계수정렬은 result에,
+         * 나머지는 arr원본에서 정렬
+         */
 
 
     }
@@ -56,6 +78,26 @@ public class Main {
             }
             arr[j] = temp; // 삽입
         }
+    }
+
+    static void counting(int[] arr) {
+
+        for (int i = 0; i < N; i++) { //2번
+            count[arr[i]]++;
+        }
+
+        int total = 0;
+        for (int i = 0; i <= max; i++) { //3번
+            total += count[i];
+            sum[i] = total;
+        }
+
+        for (int i = N - 1; i >= 0; i--) { //4번
+            int num = arr[i];
+            result[sum[num] - 1] = num; // n번째에 위치하는 거고, 인덱스는 0부터 시작하니 -1
+            sum[num]--; //다음 동일 값을 위해 -1
+        }
+
     }
 
     static void swap(int[] arr, int a, int b) {
