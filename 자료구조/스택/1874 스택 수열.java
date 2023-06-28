@@ -4,6 +4,7 @@
 - 세 가지 케이스로 분리
 - 필요한 값 < 집어넣을 수 && 필요한 값 > peekNum 이면
   입력된 수열을 만들 수 없음 -> exit
+
 + 출력할 문자들을 문자열로 엮으면 메모리 초과가 발생.
     //String 객체는 immutable이라 한 번 생성되면 수정되지 않고
     //새로운 String객체에 덧붙이는 방식으로 하기 때문
@@ -65,7 +66,6 @@ public class Main {
 
 
         }
-
         sb = new StringBuilder(sb.substring(0, sb.length() - 1));
         System.out.println(sb);
     }
