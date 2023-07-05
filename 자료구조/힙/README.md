@@ -16,7 +16,7 @@
        - 원소를 추출하면 오름차순 정렬
   
   
-자바에는 **PriorityQueue** 클래스를 통해 힙을 사용할 수 있음 (default - 최소 힙)
+자바에는 **PriorityQueue** 클래스를 통해 힙을 사용할 수 있음 (default - 최소 힙)  
 +) 최대 힙으로 사용하고 싶다면 Collections.reversOrder() 사용 
 ```
 PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder()); 
