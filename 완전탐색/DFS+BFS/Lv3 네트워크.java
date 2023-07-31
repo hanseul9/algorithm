@@ -37,6 +37,9 @@ class Solution {
 
         for (int i = 0; i < nodeCnt; i++) {
             if (computers[idx][i] == 1 && !visited[i]) {
+		//연결돼있다면 dfs로 쭉쭉 들어감
+		//연결이 끊겨있다면 탐색X
+		//이후 방문하지 않은 노드는 혼자 떨어져있으니 !visitied -> 후에 answer++ 하게됨 
                 dfs(computers, i);
             }
         }
