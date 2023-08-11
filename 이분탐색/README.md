@@ -44,7 +44,7 @@ O(logn)
   
 <details>
 <summary>🔎좀 더 자세히</summary>
-(10816 숫자 카드 2 참고)
+(10816 숫자 카드 2 참고)  
 - Lower Bound:  
 	- Lower Bound의 목표는 주어진 값 num보다 크거나 같은 첫 번째 원소의 위치(index)를 찾는 것  
 	- 이를 위해 cards[mid]의 값이 num보다 크거나 같다면 정답은 mid 혹은 그보다 왼쪽에 있을 것이라고 판단됨. 따라서 right를 mid로 이동시켜 탐색 범위를 왼쪽으로 좁힌다.  
@@ -52,7 +52,7 @@ O(logn)
    
 - Upper Bound:  
 	- Upper Bound의 목표는 주어진 값 num보다 큰 첫 번째 원소의 위치(index)를 찾는 것  
-	- cards[mid]의 값이 num과 같거나 작다면 정답은 mid의 오른쪽에 있을 것이라고 판단됨. 따라서 left를 mid + 1로 업데이트하여 탐색 범위를 오른쪽으로 좁힙니다.  
+	- cards[mid]의 값이 num과 같거나 작다면 정답은 mid의 오른쪽에 있을 것이라고 판단됨. 따라서 left를 mid + 1로 업데이트하여 탐색 범위를 오른쪽으로 좁힌다.
 	- 반대로 cards[mid]의 값이 num보다 크면 정답은 현재 mid 위치에 있거나 그보다 왼쪽에 있을 것이므로 right를 mid로 이동시켜 탐색 범위를 왼쪽으로 좁힌다.  
   
 주어진 조건에 따라 탐색 범위를 좁혀나가는 것이 핵심
