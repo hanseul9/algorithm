@@ -45,6 +45,7 @@ O(logn)
 <details>
 <summary>🔎좀 더 자세히</summary>
 (10816 숫자 카드 2 참고)  
+	
 - Lower Bound:  
 	- Lower Bound의 목표는 주어진 값 num보다 크거나 같은 첫 번째 원소의 위치(index)를 찾는 것  
 	- 이를 위해 cards[mid]의 값이 num보다 크거나 같다면 정답은 mid 혹은 그보다 왼쪽에 있을 것이라고 판단됨. 따라서 right를 mid로 이동시켜 탐색 범위를 왼쪽으로 좁힌다.  
