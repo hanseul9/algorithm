@@ -27,3 +27,36 @@ O(logn)
 3. "mid > 찾는 요소" 일때는 right를 mid-1 로 하여 탐색 재시작  
 4. 만약 " left > right" 가 된다면 찾는 요소가 배열에 없는 것  
   
+  
+  
+  
+##### lower bound와 upper bound
+  
+> 특정 값이 배열에서 시작하는 인덱스와 끝나는 인덱스를 찾기 위해 사용됨. 
+> 
+> 중복된 원소가 많은 경우 최악의 경우 원소 전체를 살펴봐야 하기에 그런 경우 해당 방법 사용
+>
+  
+- 찾으려는 값이 N일때  
+    - Lower Bound: N보다 크거나 같은 첫 번째 원소의 위치  
+    - Upper Bound: N보다 큰 첫 번째 원소의 위치 
+	-> upper - lower => 중복된 원소의 갯수  
+  
+<details>
+<summary>🔎좀 더 자세히</summary>
+(10816 숫자 카드 2 참고)
+- Lower Bound:  
+	- Lower Bound의 목표는 주어진 값 num보다 크거나 같은 첫 번째 원소의 위치(index)를 찾는 것  
+	- 이를 위해 cards[mid]의 값이 num보다 크거나 같다면 정답은 mid 혹은 그보다 왼쪽에 있을 것이라고 판단됨. 따라서 right를 mid로 이동시켜 탐색 범위를 왼쪽으로 좁힌다.  
+	- 반대로 cards[mid]의 값이 num보다 작으면 정답은 mid의 오른쪽에 있을 것이므로 left를 mid + 1로 업데이트하여 탐색 범위를 오른쪽으로 좁힌다  
+   
+- Upper Bound:  
+	- Upper Bound의 목표는 주어진 값 num보다 큰 첫 번째 원소의 위치(index)를 찾는 것  
+	- cards[mid]의 값이 num과 같거나 작다면 정답은 mid의 오른쪽에 있을 것이라고 판단됨. 따라서 left를 mid + 1로 업데이트하여 탐색 범위를 오른쪽으로 좁힙니다.  
+	- 반대로 cards[mid]의 값이 num보다 크면 정답은 현재 mid 위치에 있거나 그보다 왼쪽에 있을 것이므로 right를 mid로 이동시켜 탐색 범위를 왼쪽으로 좁힌다.  
+  
+주어진 조건에 따라 탐색 범위를 좁혀나가는 것이 핵심
+   
+</details>
+  
+  
