@@ -9,6 +9,9 @@ f(4) = f(3) + f(2) -> 3번 / 2번
 한 번 탐색시 각 n에 대한 0과 1의 값을 저장해두고
 탐색했던 요소인 경우 해당 배열값을 사용한다
 
+	dp[n][0]: fibonacci(n)를 호출했을 때, fibonacci(0)이 몇 번 호출되는지
+	dp[n][1]: fibonacci(n)를 호출했을 때, fibonacci(1)이 몇 번 호출되는지
+
  */
 
 import java.io.BufferedReader;
@@ -23,6 +26,7 @@ public class Main {
 
     static Integer[] fibonacci(int n) {
         if (dp[n][0] == null || dp[n][1] == null) {
+            //이미 계산된 값에 대해서는 중복하여 재귀하지 않도록 
             dp[n][0] = fibonacci(n - 1)[0] + fibonacci(n - 2)[0];
             dp[n][1] = fibonacci(n - 1)[1] + fibonacci(n - 2)[1];
         }
