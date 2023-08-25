@@ -16,7 +16,6 @@
 import java.util.*;
 
 class Main {
-    static int[] cnt;
     static boolean[] map;
     public static void main(String[] args){
         //문제 입력 예제
@@ -24,7 +23,6 @@ class Main {
         String target = "cog";
         String[] words = {"hot", "dot", "dog", "lot", "log"};
         //
-        cnt = new int[words.length];
         map = new boolean[words.length];
         int answer = bfs(words, begin, target);
         System.out.println(answer);
