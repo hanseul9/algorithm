@@ -125,8 +125,6 @@ count 배열에 저장되어있는 배열 요소의 개수를 통해 판단하�
   
 <details>
 <summary>🔎자세한 방법</summary>
-  
-![image](https://github.com/hanseul9/algorithm/assets/102939057/25bfe661-df01-4f43-9c0e-cbb1d070aab9)
 
 ```  
 1. 피벗을 하나 선택한다.
