@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 class Main {
-    static boolean[] map;
     public static void main(String[] args){
         //문제 입력 예제
         int[] fees = {180, 5000, 10, 600}; //주차 요금 - 길이 4 고정
