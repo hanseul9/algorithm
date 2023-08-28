@@ -66,7 +66,7 @@ class Main {
     }
     private static double interSection(List<String> list1, List<String> list2) { //교집합
         List<String> result = new ArrayList<>();
-        for (String item : new ArrayList<>(list1)) {
+        for (String item : list1) {
             if (list2.remove(item)) { // 해당 원소가 list2에 존재한다면 remove하고 true를 반환
                 result.add(item);
             }
