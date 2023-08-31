@@ -3,7 +3,8 @@
   
 #### 신장 트리(Spanning Tree)  
   - 무방향 그래프 G(V,E)에서 E에 속한 간선들로 사이클을 포함하지 않으면서 모든 정점 V를 연결한 부분 그래프를 신장 트리(Spanning Tree)라 한다.  
-<img src="https://github.com/hanseul9/algorithm/assets/102939057/fa832427-3546-4bbe-8936-77d4336e29b3" width="400">  
+<img src="https://github.com/hanseul9/algorithm/assets/102939057/fa832427-3546-4bbe-8936-77d4336e29b3" width="400">
+  
   - 그래프에서 신장 트리는 여러 형태로 존재할 수 있다.
   - 신장트리는 n개의 정점을 갖는 그래프에서 신장 트리에 속하는 간선의 수는 n-1개이며 사이클을 이루지 않는다는 특징이 있다.
   
