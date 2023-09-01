@@ -145,5 +145,155 @@ count 배열에 저장되어있는 배열 요소의 개수를 통해 판단하�
   
 +) 정렬된 상태의 배열을 정렬하고자 할때는 O(n^2)으로 최악의 성능 
   
-    
+  
+---  
+  
+  
+#### +) Comparable, Comparator  
+🍮 Lv3 가장 큰 수 참고  
+  
+- 모두 객체 비교, 정렬과 관련된 인터페이스로  
+Comparable은 클래스 내부에서 정의된 순서를 활용하여 정렬하고 비교하는데 사용되며, Comparator는 외부에서 정의된 비교 기준을 활용하여 정렬하고 비교하는데 사용됨.  
+=> 사용자의 목표는 두 인터페이스를 통해 객체를 비교할 수 있도록 만드는 것  
 
+- Comparable의 경우에는 **compare(T o1, T o2)** 를, Comparator의 경우에는 **compareTo(T o)** 를 Override 해줘야함.
+- Comparable은 **자기 자신과 매개변수 객체를 비교**하는 것이고, Comparator는 **두 매개변수 객체를 비교**한다
+
+<details>
+<summary>🔎Comparable</summary>
+  
+```  
+public class ClassName implements Comparable<Type> { 
+ 
+/*
+  ...
+  code
+  ...
+ */
+ 
+	// 필수 구현 부분
+	@Override
+	public int compareTo(Type o) {
+	     /*
+		 비교 구현
+	      */
+	}
+}
+```
+- 가령 우선순위 큐에 사용자 정의 클래스를 넣는다면 위와 같이 클래스간의 비교가 가능하게 구현해줘야함 (백준 1197 참고)
+  
+  ex)  
+```
+	class Student implements Comparable<Student> {
+	 
+		int age;		// 나이
+		int classNumber;	// 학급
+		
+		Student(int age, int classNumber) {
+			this.age = age;
+			this.classNumber = classNumber;
+		}
+		
+		@Override
+		public int compareTo(Student o) { // 비교 구현
+	    
+			// 자기자신의 age가 o의 age보다 크다면 양수
+			if(this.age > o.age) {
+				return 1;
+			}
+			// 자기 자신의 age와 o의 age가 같다면 0
+			else if(this.age == o.age) {
+				return 0;
+			}
+			// 자기 자신의 age가 o의 age보다 작다면 음수
+			else {
+				return -1;
+			}
+		}
+	}
+```
+- 자신을 기준으로 삼아 대소관계를 파악하여 return 해주도록 구현  
+- 자기 자신을 기준으로 상대방과의 차이값 비교하여 반환하므로 **return this.age - o.age** 이런 식으로도 가능  
+  단 이 경우에는 overflow에 주의 
+
+
+- Wrapper 클래스 객체에 사용하는 경우
+```
+	기준값.compareTo(비교값); 
+```
+  문자열 비교와 숫자 비교 두 가지 방식이 있음
+  	- **숫자 비교**의 경우 기준이 비교대상보다 크면 양수, 작으면 음수, 동일하면 0을 나타낸다.
+	- **문자열 비교**의 경우 두 가지로 나뉜다
+ 		- 1) 기준값의 앞자리부터 일치하는 문자열이 포함된 경우 (기준 문자열 길이-비교대상 문자열 길이)를 리턴
+     		- 2) 비교대상과 전혀 다른 문자열인 경우 첫 char간의 아스키코드 차이값을 리턴
+  
+</details>
+  
+  
+<details>
+<summary>🔎Comparator</summary>
+
+```
+	import java.util.Comparator;	// import 필요
+	public class ClassName implements Comparator<Type> { 
+	 
+	/*
+	  ...
+	  code
+	  ...
+	 */
+	 
+		// 필수 구현 부분
+		@Override
+		public int compare(Type o1, Type o2) {
+			/*
+			 비교 구현
+			 */
+		}
+	}
+```
+- 매커니즘 자체는 compareTo와 비슷. 자기 자신과 비교가 되느냐 안 되느냐의 차이
+  
+ex)
+```
+	import java.util.Comparator;	// import 필요
+	class Student implements Comparator<Student> {
+	 
+		int age;			// 나이
+		int classNumber;	// 학급
+		
+		Student(int age, int classNumber) {
+			this.age = age;
+			this.classNumber = classNumber;
+		}
+		
+		@Override
+		public int compare(Student o1, Student o2) {
+	    
+			// o1의 학급이 o2의 학급보다 크다면 양수
+			if(o1.classNumber > o2.classNumber) {
+				return 1;
+			}
+			// o1의 학급이 o2의 학급과 같다면 0
+			else if(o1.classNumber == o2.classNumber) {
+				return 0;
+			}
+			// o1의 학급이 o2의 학급보다 작다면 음수
+			else {
+				return -1;
+			}
+		}
+	}
+```
+- o1과 o2를 비교함에 있어 자기 자신은 두 객체 비교에 영향이 없다
+- compareTo에서 했던것과 마찬가지로 **return o1.classNumber - o2.classNumber;** 로 간략하게 할 수 있음
+- 마찬가지로 overflow 주의
+
+</details>
+
+* 간단하게 정리하면 두 메소드 모두 return값이 양수인 경우 순서가 바뀜. 따라서 내림차순을 하고싶다면 뺄셈 순서를 바꿔 return해주면 됨
+* compareTo는 자기 자신과 매개변수 하나, compare은 해당 객체와 상관없는 매개변수 둘을 비교한다는 것이 차이
+  
+  
++) 자바 버전마다 다르지만 Java7 이후부터 Arrays.sort는 Quick sort를 사용하여 평균적으로 O(nlogn)의 시간복잡도를,  
+  Collections.sort은 Tim Sort를 사용하여 안정적으로 O(nlogn)의 시간복잡도를 가진다
