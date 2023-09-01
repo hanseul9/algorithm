@@ -34,7 +34,7 @@ class Main {
 
         visited = new boolean[V + 1]; // 1 ~ V 사용
 
-        graph = new ArrayList<>(); // 정점의 연결을 저장
+
         for (int i = 0; i <= V; i++) {
             graph.add(new ArrayList<>());
         }
@@ -45,6 +45,7 @@ class Main {
             int v1 = Integer.parseInt(st.nextToken());
             int v2 = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
+            // 정점의 연결을 저장 - 정점별로 어디와 연결되어있는지
             graph.get(v1).add(new Edge(v2, cost));
             graph.get(v2).add(new Edge(v1, cost));
         }
@@ -59,16 +60,17 @@ class Main {
     static int prim(int start) {
 
         PriorityQueue<Edge> queue = new PriorityQueue<>();
-        queue.add(new Edge(start, 0));
+        queue.add(new Edge(start, 0)); // 일단 하나 넣어줌
 
         int answer = 0;
         while (!queue.isEmpty()) {
             Edge currentNode = queue.poll();
-            if (!visited[currentNode.vertex]) {
-                visited[currentNode.vertex] = true;
-                answer += currentNode.cost;
+            if (!visited[currentNode.vertex]) { // 방문하지 않았다면 == MST에 포함되어있지 않다면
+                visited[currentNode.vertex] = true; //방문처리
+                answer += currentNode.cost; //가중치 증가
                 for (Edge next : graph.get(currentNode.vertex)) {
-                    if (!visited[next.vertex]) {
+                    // 해당 정점과 연결된 간선,노드들을 확인해줌.
+                    if (!visited[next.vertex]) { //방문하지 않았다면 큐에 넣어주기
                         queue.add(next);
                     }
                 }
