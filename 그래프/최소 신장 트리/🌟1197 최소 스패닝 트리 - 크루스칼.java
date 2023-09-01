@@ -7,10 +7,10 @@ import java.io.*;
 import java.util.*;
 class Main {
 
-    static class Node {
+    static class Edge {
         int v1, v2, cost;
 
-        Node(int v1, int v2, int cost) {
+        Edge(int v1, int v2, int cost) {
             this.v1 = v1;
             this.v2 = v2;
             this.cost = cost;
@@ -18,7 +18,7 @@ class Main {
     }
 
     static int[] parent;
-    static List<Node> nodes = new ArrayList<>();
+    static List<Edge> edges = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,21 +37,21 @@ class Main {
             int v1 = Integer.parseInt(st.nextToken());
             int v2 = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
-            nodes.add(new Node(v1, v2, cost));
+            edges.add(new Edge(v1, v2, cost));
         }
-        nodes.sort(new Comparator<Node>() { // cost를 기준으로 오름차순 정렬
+        edges.sort(new Comparator<Edge>() { // cost를 기준으로 오름차순 정렬
             @Override
-            public int compare(Node o1, Node o2) {
+            public int compare(Edge o1, Edge o2) {
                 return Integer.compare(o1.cost, o2.cost);
             }
         });
 
         int answer = 0;
-        for (int i = 0; i < nodes.size(); i++) { // 정렬된 순대로 탐색
-            Node node = nodes.get(i);
-            if (!isSameParent(node.v1, node.v2)) { // 두 노드의 부모가 다르다면
-                union(node.v1, node.v2); // 연결
-                answer += node.cost; //가중치 추가
+        for (int i = 0; i < edges.size(); i++) { // 정렬된 순대로 탐색
+            Edge edge = edges.get(i);
+            if (!isSameParent(edge.v1, edge.v2)) { // 두 노드의 부모가 다르다면
+                union(edge.v1, edge.v2); // 연결
+                answer += edge.cost; //가중치 추가
             }
         }
 
