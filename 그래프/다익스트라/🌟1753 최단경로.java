@@ -52,8 +52,7 @@ class Main {
             int v2 = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
             // 정점별로 연결 정보 저장
-            graph.get(v1).add(new Edge(v2, cost));
-            //graph.get(v2).add(new Edge(v1, cost));
+            graph.get(v1).add(new Edge(v2, cost)); //단방향 그래프
         }
 
         dijkstra(start);
