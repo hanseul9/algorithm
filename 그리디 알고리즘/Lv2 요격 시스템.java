@@ -27,6 +27,7 @@ class Main {
         Arrays.sort(targets, Comparator.comparingInt(o -> o[1])); // 두번째 요소를 기준으로 오름차순 정렬
 
 
+
         for (int i = 0; i < targets.length; i++) {
             int s = targets[i][0];
             int e = targets[i][1];
